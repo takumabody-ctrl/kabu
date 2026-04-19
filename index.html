@@ -2,60 +2,103 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Takuma専用：世界最強銘柄エビデンス・ナビ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Takuma Investment Radar</title>
     <style>
-        :root { --main: #1A237E; --sub: #C5CAE9; --win: #2E7D32; --risk: #C62828; }
-        body { font-family: sans-serif; background: #F5F5F5; padding: 20px; max-width: 800px; margin: auto; }
-        .card { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        h1 { color: var(--main); font-size: 20px; border-left: 5px solid var(--main); padding-left: 10px; }
-        .stock-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        .stock-table th { background: var(--main); color: #fff; padding: 10px; font-size: 13px; }
-        .stock-table td { border-bottom: 1px solid #ddd; padding: 12px; font-size: 14px; }
-        .ev-label { background: var(--sub); font-size: 11px; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
-        .risk-text { color: var(--risk); font-size: 12px; font-weight: bold; }
-        .benefit-text { color: var(--win); font-size: 12px; font-weight: bold; }
+        :root { --bg: #0a0e14; --card: #161b22; --accent: #58a6ff; --win: #3fb950; --risk: #f85149; --text: #c9d1d9; }
+        body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 10px; }
+        .header { text-align: center; padding: 20px 0; border-bottom: 1px solid #30363d; }
+        .config-card { background: var(--card); border-radius: 12px; padding: 15px; margin: 15px 0; border: 1px solid #30363d; }
+        .param-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 14px; }
+        input[type="range"] { width: 60%; }
+        .top10-list { display: flex; flex-direction: column; gap: 10px; }
+        .stock-item { background: var(--card); border-radius: 10px; padding: 15px; border-left: 4px solid var(--accent); }
+        .stock-top { display: flex; justify-content: space-between; font-weight: bold; }
+        .ticker { color: var(--accent); font-size: 18px; }
+        .price { font-size: 18px; }
+        .evidence-box { font-size: 12px; margin-top: 10px; background: rgba(255,255,255,0.05); padding: 8px; border-radius: 5px; }
+        .badge { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; margin-right: 5px; }
+        .b-minor { background: #8957e5; } .b-div { background: #bf8700; }
+        .update-btn { width: 100%; padding: 12px; background: var(--accent); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <h1>🌍 世界最強・厳選エビデンス銘柄</h1>
-    <table class="stock-table">
-        <thead>
-            <tr>
-                <th>銘柄 / 分類</th>
-                <th>選定エビデンス（なぜ儲かる？）</th>
-                <th>メリット / リスク</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>VYM</strong><br><small>米国高配当株ETF</small></td>
-                <td><span class="ev-label">統計学</span> 400銘柄以上に分散。配当利回りが高く、増配率が年平均7%超えという実績。</td>
-                <td><span class="benefit-text">◎ 100円〜積立可。年4回の配当。</span><br><span class="risk-text">▲ 米国市場全体の暴落。</span></td>
-            </tr>
-            <tr>
-                <td><strong>三菱HCキャピタル</strong><br><small>日本株（S株）</small></td>
-                <td><span class="ev-label">連続増配</span> 25年以上連続増配中。日本で数少ない「配当王」候補のエビデンス。</td>
-                <td><span class="benefit-text">◎ 1,000円以下で購入可。高利回り。</span><br><span class="risk-text">▲ 金利変動によるリース収益悪化。</span></td>
-            </tr>
-            <tr>
-                <td><strong>コカ・コーラ(KO)</strong><br><small>米国個別株</small></td>
-                <td><span class="ev-label">ワイド・モート</span> 世界1位のブランド力。60年以上増配。インフレ時に価格転嫁できる圧倒的強み。</td>
-                <td><span class="benefit-text">◎ 景気に左右されない最強の安定性。</span><br><span class="risk-text">▲ 健康志向による炭酸飲料離れ。</span></td>
-            </tr>
-        </tbody>
-    </table>
+<div class="header">
+    <h2 style="margin:0;">📈 本日の投資株 TOP10</h2>
+    <small>Takuma's Evidence-Based Strategy</small>
 </div>
 
-<div class="card">
-    <h1>🛠️ 毎日100円「負けない」運用ルール</h1>
-    <ul style="font-size: 14px; line-height: 1.8;">
-        <li><strong>ルール1：</strong> SBI証券の「毎日積立」設定を活用し、思考停止で自動購入する。（感情を排除）</li>
-        <li><strong>ルール2：</strong> 下落した日は「安く買えるラッキー」と捉える（エビデンス：平均取得単価の低下）。</li>
-        <li><strong>ルール3：</strong> 配当金はすべて再投資。複利の力を最大化させる（アインシュタインが呼んだ人類最大の発見）。</li>
-    </ul>
+<div class="config-card">
+    <div style="font-size:12px; font-weight:bold; margin-bottom:10px; color:var(--accent);">🔧 スクリーニング・エビデンス調整</div>
+    <div class="param-row">
+        <span>配当利回り重視</span>
+        <input type="range" id="yield_p" min="0" max="100" value="70">
+    </div>
+    <div class="param-row">
+        <span>割安性(PBR)重視</span>
+        <input type="range" id="pbr_p" min="0" max="100" value="50">
+    </div>
+    <div class="param-row">
+        <span>マイナー株混入率</span>
+        <input type="range" id="minor_p" min="0" max="100" value="40">
+    </div>
+    <button class="update-btn" onclick="refreshTop10()">リアルタイム解析実行</button>
 </div>
 
+<div class="top10-list" id="stockList">
+    </div>
+
+<script>
+// サンプルデータとロジック（実際にはAPI連携を想定）
+const masterData = [
+    { name: "NTT", ticker: "9432", type: "大型", minor: false, yield: 3.5, pbr: 1.4, evidence: "dポイント経済圏の圧倒的独占力。100円単位で買う『実技』に最適。" },
+    { name: "三菱HCキャピタル", ticker: "8593", type: "中堅", minor: true, yield: 4.2, pbr: 0.8, evidence: "25年連続増配。PBR1倍割れの『是正期待』という強力なエビデンス。" },
+    { name: "アップル", ticker: "AAPL", type: "米国", minor: false, yield: 0.5, pbr: 40, evidence: "圧倒的キャッシュフロー。サービス収益の伸びがリスクを相殺。" },
+    { name: "ABBVIE", ticker: "ABBV", type: "米国", minor: true, yield: 3.8, pbr: 15, evidence: "免疫疾患薬の特許が切れてもなお、後継薬の成長が期待されるバイオの王者。" },
+    { name: "エスプール", ticker: "2471", type: "マイナー", minor: true, yield: 3.2, pbr: 3.5, evidence: "障がい者雇用支援。ESG投資の文脈で機関投資家が狙うエビデンス。" },
+    // 実際にはもっと多くのデータを配列に入れます
+];
+
+function refreshTop10() {
+    const list = document.getElementById('stockList');
+    list.innerHTML = "解析中...";
+    
+    // 調整数値を反映させたスコアリング（簡易版）
+    const yP = document.getElementById('yield_p').value;
+    const mP = document.getElementById('minor_p').value;
+    
+    const sorted = [...masterData].sort((a, b) => {
+        let scoreA = (a.yield * yP) + (a.minor ? mP : 0);
+        let scoreB = (b.yield * yP) + (b.minor ? mP : 0);
+        return scoreB - scoreA;
+    }).slice(0, 10);
+
+    setTimeout(() => {
+        list.innerHTML = sorted.map((s, index) => `
+            <div class="stock-item">
+                <div class="stock-top">
+                    <span>${index+1}. <span class="ticker">${s.ticker}</span> ${s.name}</span>
+                    <span class="price">${(s.yield).toFixed(1)}%</span>
+                </div>
+                <div style="margin-top:5px;">
+                    ${s.minor ? '<span class="badge b-minor">マイナー株</span>' : ''}
+                    <span class="badge b-div">配当重視</span>
+                </div>
+                <div class="evidence-box">
+                    <strong>【エビデンス】</strong> ${s.evidence}
+                </div>
+                <div style="font-size:11px; margin-top:5px; display:flex; gap:10px;">
+                    <span style="color:var(--win);">利益期待: 👑👑👑</span>
+                    <span style="color:var(--risk);">リスク: ⚠️</span>
+                </div>
+            </div>
+        `).join('');
+    }, 500);
+}
+
+// 初期実行
+refreshTop10();
+</script>
 </body>
 </html>
